@@ -4,10 +4,24 @@
   {% block title %}<title>LITReview</title>{% endblock %}
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
+  <header id="header">
+    <nav id="navbar">
+      <div id="logo"><a href="/">LITReview</a></div>
+      {% if user.is_authenticated %}
+      <div class="nav-links">
+        <a href="#">Flux</a>
+        <a href="#">Posts</a>
+        <a href="#">Abonnements</a>
+        <a href="{% url 'logout' %}">Se déconnecter</a>
+      </div>
+      {% endif %}
+    </nav>
+  </header>
   <main>
     {% block content %}{% endblock %}
   </main>
