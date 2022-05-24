@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}<title>{{ ticket.title }}</title>{% endblock %}
+
+{% block content %}
+    <h1>Ticket - {{ ticket.user }}</h1>
+    <h2>{{ ticket.title }}</h2>
+
+    <p><strong>Description:</strong> {{ ticket.description }}</p>
+    {% if ticket.image %}
+    <p><strong>Image:</strong> <br> <img src="{{ ticket.image.url }}"></p>
+    {% endif %}
+    <p><strong>Date de création:</strong> {{ ticket.time_created }}</p>
+{% endblock %}

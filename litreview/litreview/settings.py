@@ -136,3 +136,7 @@ LOGIN_EXEMPT_URLS = (
 LOGIN_URL = "/accounts/home/"
 LOGIN_REDIRECT_URL = "/catalog/feed/"
 LOGOUT_REDIRECT_URL = "/accounts/home/"
+
+
+MEDIA_ROOT = "/media/images/"
+MEDIA_URL = "/media/"

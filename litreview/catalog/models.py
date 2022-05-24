@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.conf import settings
+from django.urls import reverse
 
 
 class UserFollows(models.Model):
@@ -24,18 +25,17 @@ class UserFollows(models.Model):
 
 
 class Ticket(models.Model):
-    title = models.CharField(
-        max_length=128, help_text="Entrer un titre pour ce ticket."
-    )
-    description = models.TextField(
-        max_length=2048, blank=True, help_text="Entrer une description pour ce ticket."
-    )
+    title = models.CharField(max_length=128)
+    description = models.TextField(max_length=2048, blank=True)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    image = models.ImageField(null=True, blank=True)
+    image = models.ImageField(upload_to="images/", null=True, blank=True)
     time_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("catalog:ticket-detail", args=[str(self.id)])
 
 
 class Review(models.Model):
@@ -45,13 +45,12 @@ class Review(models.Model):
         help_text="Veuillez renseigner une note allant de 0 à 5.",
     )
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    headline = models.CharField(
-        max_length=128, help_text="Renseigner un titre pour cette critique."
-    )
-    body = models.TextField(
-        max_length=8192, blank=True, help_text="Renseigner votre critique."
-    )
+    headline = models.CharField(max_length=128)
+    body = models.TextField(max_length=8192, blank=True)
     time_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.headline
+
+    def get_absolute_url(self):
+        return reverse("review-detail", args=[str(self.id)])
