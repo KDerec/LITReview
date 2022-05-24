@@ -3,16 +3,13 @@
 {% block title %}<title>Page d'accueil</title>{% endblock %}
 
 {% block content %}
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
-{% else %}
   <section id="signup">
-    <h2>Inscrivez-vous maintenant</h2>
-    <a href="{% url 'signup' %}"><button type="button">S'inscrire</button></a>
+    <h1>Inscrivez-vous maintenant</h1>
+    <a href="{% url 'accounts:signup' %}"><button type="button">S'inscrire</button></a>
   </section>
   
   <section id="login">
-    <h2>Connectez-vous</h2>
+    <h1>Connectez-vous</h1>
     {% if form.errors %}
     <p>Your username and password didn't match. Please try again.</p>
     {% endif %}
@@ -33,5 +30,4 @@
     <input type="hidden" name="next" value="{{ next }}">
     </form>
   </section>
-{% endif %}
 {% endblock %}

@@ -49,6 +49,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "litreview.middleware.LoginRequiredMiddleware",
 ]
 
 ROOT_URLCONF = "litreview.urls"
@@ -56,7 +57,7 @@ ROOT_URLCONF = "litreview.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates"],
+        "DIRS": [BASE_DIR / "templates", BASE_DIR / "catalog/templates/catalog"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -128,5 +129,10 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-LOGIN_REDIRECT_URL = "feed"
-LOGOUT_REDIRECT_URL = "home"
+LOGIN_EXEMPT_URLS = (
+    r"^accounts/home/$",
+    r"^accounts/signup/$",
+)
+LOGIN_URL = "/accounts/home/"
+LOGIN_REDIRECT_URL = "/catalog/feed/"
+LOGOUT_REDIRECT_URL = "/accounts/home/"

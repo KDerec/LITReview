@@ -16,13 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
-from django.views.generic import TemplateView
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("accounts/", include("accounts.urls")),
-    path("catalog/", include("catalog.urls")),
+    path("accounts/", include(("accounts.urls", "accounts"), namespace="accounts")),
+    path("catalog/", include(("catalog.urls", "catalog"), namespace="catalog")),
 ]
 
 # Add URL maps to redirect the base URL to our application
