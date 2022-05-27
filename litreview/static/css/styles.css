@@ -38,3 +38,18 @@ a {
 #logo {
     margin-left: 50%;
 }
+
+#feed {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style-type: none;
+}
+
+.feed-object {
+    border: 1px;
+    border-style: solid;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}

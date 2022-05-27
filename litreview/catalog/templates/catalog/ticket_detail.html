@@ -3,12 +3,12 @@
 {% block title %}<title>{{ ticket.title }}</title>{% endblock %}
 
 {% block content %}
-    <h1>Ticket - {{ ticket.user }}</h1>
+    <h1>{{ ticket.user }} a demandé une critique.</h1>
+    <p>{{ ticket.time_created }}</p>
     <h2>{{ ticket.title }}</h2>
 
-    <p><strong>Description:</strong> {{ ticket.description }}</p>
+    <p>{{ ticket.description }}</p>
     {% if ticket.image %}
-    <p><strong>Image:</strong> <br> <img src="{{ ticket.image.url }}"></p>
+    <p><br><img src="{{ ticket.image.url }}"></p>
     {% endif %}
-    <p><strong>Date de création:</strong> {{ ticket.time_created }}</p>
 {% endblock %}

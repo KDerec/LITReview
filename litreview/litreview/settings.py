@@ -134,7 +134,7 @@ LOGIN_EXEMPT_URLS = (
     r"^accounts/signup/$",
 )
 LOGIN_URL = "/accounts/home/"
-LOGIN_REDIRECT_URL = "/catalog/feed/"
+LOGIN_REDIRECT_URL = "/catalog/"
 LOGOUT_REDIRECT_URL = "/accounts/home/"
 
 

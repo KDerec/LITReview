@@ -5,8 +5,24 @@
 {% endblock %}
 
 {% block content %}
-  <h1>Vous êtes dans le flux.</h1>
-  <p>Bienvenue dans le flux.</p>
-  <h2>Contenu dynamique</h2>
-  <p>Work in progress</p>
+  <a href="{% url 'catalog:create-ticket' %}"><button type="button">Demander une critique</button></a>
+  {% if ticket_list %}
+  <ul id="feed">
+    {% for ticket in ticket_list %}
+      <li class="feed-object">
+        <a href="{{ ticket.get_absolute_url }}">
+        <h1>{{ ticket.user }} a demandé une critique</h1>
+        <p>{{ ticket.time_created }}</p>
+        <h2>{{ ticket.title }}</h2>
+        <p>{{ ticket.description }}</p>
+        {% if ticket.image %}
+        <p><br><img src="{{ ticket.image.url }}"></p>
+        {% endif %}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>Il n'y a pas de ticket.</p>
+  {% endif %}
 {% endblock %}

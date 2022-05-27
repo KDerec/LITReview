@@ -1,10 +1,14 @@
 from django.shortcuts import render
 from django.views import generic
-from catalog.models import Ticket
+from catalog.models import Ticket, Review
 
 
 def feed(request):
-    return render(request, "feed.html")
+    ticket_list = Ticket.objects.all().order_by("time_created")
+    context = {
+        "ticket_list": ticket_list,
+    }
+    return render(request, "feed.html", context=context)
 
 
 class TicketCreateView(generic.edit.CreateView):
