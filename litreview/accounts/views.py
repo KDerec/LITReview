@@ -8,10 +8,10 @@ def redirect_view(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect("/catalog/")
     else:
-        return HttpResponseRedirect("home/")
+        return HttpResponseRedirect("/home/")
 
 
 class SignUpView(generic.CreateView):
     form_class = UserCreationForm
-    success_url = reverse_lazy("login")
+    success_url = "/accounts/home/"
     template_name = "registration/signup.html"
