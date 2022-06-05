@@ -6,6 +6,7 @@
 
 {% block content %}
   <a href="{% url 'catalog:create-ticket' %}"><button type="button">Demander une critique</button></a>
+  <a href="{% url 'catalog:create-review' %}"><button type="button">Créer une critique</button></a>
   {% if ticket_list %}
   <ul id="feed">
     {% for ticket in ticket_list %}
@@ -18,6 +19,7 @@
         {% if ticket.image %}
         <img src="{{ ticket.image.url }}">
         {% endif %}
+        <a href="{% url 'catalog:create-review-from-ticket' ticket.id %}"><button type="button">Créer une critique</button></a>
         </a>
       </li>
     {% endfor %}

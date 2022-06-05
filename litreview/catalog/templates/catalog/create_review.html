@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}<title>Créer une critique</title>{% endblock %}
+
+{% block content %}
+<h1>Créer une critique</h1>
+{% if ticket %}
+    <section class="ticket">
+        <h1>{{ ticket.user }} a demandé une critique</h1>
+        <p>{{ ticket.time_created }}</p>
+        <h2>{{ ticket.title }}</h2>
+        <p>{{ ticket.description }}</p>
+        {% if ticket.image %}
+        <img src="{{ ticket.image.url }}">
+        {% endif %}
+    </section>
+{% else %}
+    <p>Il n'y a pas de ticket.</p>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>
+{% endblock %}
