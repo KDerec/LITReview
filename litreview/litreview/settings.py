@@ -138,5 +138,5 @@ LOGIN_REDIRECT_URL = "/catalog/"
 LOGOUT_REDIRECT_URL = "/accounts/home/"
 
 
-MEDIA_ROOT = "/media/images/"
+MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "/media/"

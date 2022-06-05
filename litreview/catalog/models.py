@@ -25,8 +25,12 @@ class UserFollows(models.Model):
 
 
 class Ticket(models.Model):
-    title = models.CharField(max_length=128)
-    description = models.TextField(max_length=2048, blank=True)
+    title = models.CharField(
+        max_length=128, help_text="Insérez le titre du livre ou de l'article."
+    )
+    description = models.TextField(
+        max_length=2048, blank=True, help_text="Exprimez votre demande."
+    )
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     image = models.ImageField(upload_to="images/", null=True, blank=True)
     time_created = models.DateTimeField(auto_now_add=True)

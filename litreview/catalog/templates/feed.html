@@ -16,7 +16,7 @@
         <h2>{{ ticket.title }}</h2>
         <p>{{ ticket.description }}</p>
         {% if ticket.image %}
-        <p><br><img src="{{ ticket.image.url }}"></p>
+        <img src="{{ ticket.image.url }}">
         {% endif %}
         </a>
       </li>

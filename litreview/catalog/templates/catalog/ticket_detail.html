@@ -6,9 +6,8 @@
     <h1>{{ ticket.user }} a demandé une critique.</h1>
     <p>{{ ticket.time_created }}</p>
     <h2>{{ ticket.title }}</h2>
-
     <p>{{ ticket.description }}</p>
     {% if ticket.image %}
-    <p><br><img src="{{ ticket.image.url }}"></p>
+    <img src="{{ ticket.image.url }}">
     {% endif %}
 {% endblock %}
