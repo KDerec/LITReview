@@ -16,6 +16,21 @@ def feed(request):
     return render(request, "feed.html", context=context)
 
 
+def my_post(request):
+    tickets_list = list(
+        Ticket.objects.filter(user=request.user).order_by("time_created")
+    )
+    reviews_list = list(
+        Review.objects.filter(user=request.user).order_by("time_created")
+    )
+    posts_list = tickets_list + reviews_list
+    posts_list.sort(key=lambda r: r.time_created, reverse=True)
+    context = {
+        "posts_list": posts_list,
+    }
+    return render(request, "my_post.html", context=context)
+
+
 def create_review(request, pk=None):
     ticket_id = pk
     if ticket_id:

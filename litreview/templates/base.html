@@ -15,7 +15,7 @@
       {% if user.is_authenticated %}
       <div class="nav-links">
         <a href="/">Flux</a>
-        <a href="#">Posts</a>
+        <a href="{% url 'catalog:my-post' %}">Posts</a>
         <a href="#">Abonnements</a>
         <a href="{% url 'accounts:logout' %}">Se déconnecter</a>
       </div>
