@@ -5,26 +5,47 @@
 {% endblock %}
 
 {% block content %}
-  <a href="{% url 'catalog:create-ticket' %}"><button type="button">Demander une critique</button></a>
-  <a href="{% url 'catalog:create-review' %}"><button type="button">Créer une critique</button></a>
-  {% if ticket_list %}
-  <ul id="feed">
-    {% for ticket in ticket_list %}
-      <li class="feed-object">
-        <a href="{{ ticket.get_absolute_url }}">
-        <h1>{{ ticket.user }} a demandé une critique</h1>
-        <p>{{ ticket.time_created }}</p>
-        <h2>{{ ticket.title }}</h2>
-        <p>{{ ticket.description }}</p>
-        {% if ticket.image %}
-        <img src="{{ ticket.image.url }}">
+<div id="buttons">
+    <a href="{% url 'catalog:create-ticket' %}"><button type="button">Demander une critique</button></a>
+    <a href="{% url 'catalog:create-review' %}"><button type="button">Créer une critique</button></a>
+</div>
+{% if posts_list %}
+<ul id="feed">
+    {% for post in posts_list %}
+    {% if post.title %}
+    <li class="ticket-object">
+        <h1>{{ post.user }} a demandé une critique</h1>
+        <p>{{ post.time_created }}</p>
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.description }}</p>
+        {% if post.image %}
+        <img src="{{ post.image.url }}">
         {% endif %}
-        <a href="{% url 'catalog:create-review-from-ticket' ticket.id %}"><button type="button">Créer une critique</button></a>
-        </a>
-      </li>
+        <a href="{% url 'catalog:create-review-from-ticket' post.id %}"><button type="button">Créer une
+                critique</button></a>
+    </li>
+    {% endif %}
+    {% if post.headline %}
+    <li class="review-object">
+        <h1>{{ post.user }} a publié une critique.</h1>
+        <p>{{ post.time_created }}</p>
+        <h2>{{ post.headline }} - {{post.rating}}/5</h2>
+        <p>{{ post.body }}</p>
+        <ul class="ticket-object">
+            <li>
+                <h1>Ticket - {{ post.ticket.user }}</h1>
+                <p>{{ post.ticket.time_created }}</p>
+                <h2>{{ post.ticket.title }}</h2>
+                {% if post.ticket.image %}
+                <img src="{{ post.ticket.image.url }}">
+                {% endif %}
+            </li>
+        </ul>
+    </li>
+    {% endif %}
     {% endfor %}
-  </ul>
-  {% else %}
-    <p>Il n'y a pas de ticket.</p>
-  {% endif %}
+</ul>
+{% else %}
+<p>Il n'y a pas de ticket ni de critique.</p>
+{% endif %}
 {% endblock %}

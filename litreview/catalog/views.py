@@ -6,9 +6,12 @@ from catalog.models import Ticket, Review
 
 
 def feed(request):
-    ticket_list = Ticket.objects.all().order_by("time_created")
+    tickets_list = list(Ticket.objects.all().order_by("time_created"))
+    reviews_list = list(Review.objects.all().order_by("time_created"))
+    posts_list = tickets_list + reviews_list
+    posts_list.sort(key=lambda r: r.time_created, reverse=True)
     context = {
-        "ticket_list": ticket_list,
+        "posts_list": posts_list,
     }
     return render(request, "feed.html", context=context)
 
