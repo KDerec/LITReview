@@ -3,31 +3,31 @@
 {% block title %}<title>Page d'accueil</title>{% endblock %}
 
 {% block content %}
-  <section id="signup">
+<section id="signup">
     <h1>Inscrivez-vous maintenant</h1>
     <a href="{% url 'accounts:signup' %}"><button type="button">S'inscrire</button></a>
-  </section>
-  
-  <section id="login">
+</section>
+
+<section id="login">
     <h1>Connectez-vous</h1>
     {% if form.errors %}
     <p>Your username and password didn't match. Please try again.</p>
     {% endif %}
     <form method="post" action="">
-    {% csrf_token %}
-    <table>
-    <tr>
-        <td><label for="username">Nom d'utilisateur: </label></td>
-        <td>{{ form.username }}</td>
-    </tr>
-    <tr>
-        <td><label for="password">Mot de passe: </label></td>
-        <td>{{ form.password }}</td>
-    </tr>
-    </table>
-    
-    <input type="submit" value="Se connecter">
-    <input type="hidden" name="next" value="{{ next }}">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td><label for="username">Nom d'utilisateur: </label></td>
+                <td>{{ form.username }}</td>
+            </tr>
+            <tr>
+                <td><label for="password">Mot de passe: </label></td>
+                <td>{{ form.password }}</td>
+            </tr>
+        </table>
+
+        <input type="submit" value="Se connecter">
+        <input type="hidden" name="next" value="{{ next }}">
     </form>
-  </section>
+</section>
 {% endblock %}
