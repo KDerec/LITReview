@@ -17,8 +17,9 @@ def feed(request):
 
 
 def create_review(request, pk=None):
-    if pk:
-        ticket = Ticket.objects.filter(id=pk)
+    ticket_id = pk
+    if ticket_id:
+        ticket = Ticket.objects.filter(id=ticket_id)
         context = {
             "ticket": ticket[0],
         }
@@ -26,18 +27,29 @@ def create_review(request, pk=None):
         context = {}
 
     if request.method == "GET":
-        form = ReviewForm()
+        review_form = ReviewForm()
+        ticket_form = TicketForm()
 
     if request.method == "POST":
-        form = ReviewForm(request.POST)
-        if form.is_valid():
-            new_review = form.save(commit=False)
-            new_review.ticket = ticket[0]
+        review_form = ReviewForm(request.POST)
+        ticket_form = TicketForm(request.POST, request.FILES)
+        if ticket_form.is_valid():
+            new_ticket = ticket_form.save(commit=False)
+            new_ticket.user = request.user
+            new_ticket.save()
+        if review_form.is_valid():
+            new_review = review_form.save(commit=False)
+            if ticket_id:
+                new_review.ticket = ticket[0]
+            else:
+                new_review.ticket = new_ticket
             new_review.user = request.user
             new_review.save()
             return HttpResponseRedirect(new_review.get_absolute_url())
 
-    context["form"] = form
+    context["review_form"] = review_form
+    if not ticket_id:
+        context["ticket_form"] = ticket_form
 
     return render(request, "create_review.html", context=context)
 
@@ -53,6 +65,12 @@ class TicketCreateView(generic.edit.CreateView):
         self.object.user = self.request.user
         self.object.save()
         return super().form_valid(form)
+
+
+class TicketForm(ModelForm):
+    class Meta:
+        model = Ticket
+        fields = ["title", "description", "image"]
 
 
 class TicketDetailView(generic.DetailView):
