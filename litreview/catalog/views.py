@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import generic
 from django.forms import ModelForm
 from django.http import HttpResponseRedirect
+from django.urls import reverse_lazy
 from catalog.models import Ticket, Review
 
 
@@ -92,6 +93,12 @@ class TicketUpdateView(generic.UpdateView):
     model = Ticket
     fields = ["title", "description", "image"]
     template_name = "update_ticket.html"
+
+
+class TicketDeleteView(generic.edit.DeleteView):
+    model = Ticket
+    success_url = reverse_lazy("catalog:my-post")
+    template_name = "confirm_delete.html"
 
 
 class TicketDetailView(generic.DetailView):

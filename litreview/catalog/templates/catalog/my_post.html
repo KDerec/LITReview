@@ -18,6 +18,7 @@
         <img src="{{ post.image.url }}">
         {% endif %}
         <a href="{% url 'catalog:update-ticket' post.id %}"><button type="button">Modifier</button></a>
+        <a href="{% url 'catalog:delete-ticket' post.id %}"><button type="button">Supprimer</button></a>
     </li>
     {% endif %}
     {% if post.headline %}
