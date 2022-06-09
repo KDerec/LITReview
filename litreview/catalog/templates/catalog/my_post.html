@@ -37,6 +37,7 @@
                 {% endif %}
             </li>
         </ul>
+        <a href="{% url 'catalog:update-review' post.id %}"><button type="button">Modifier</button></a>
     </li>
     {% endif %}
     {% endfor %}

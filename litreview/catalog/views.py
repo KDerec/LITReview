@@ -111,5 +111,11 @@ class ReviewForm(ModelForm):
         fields = ["rating", "headline", "body"]
 
 
+class ReviewUpdateView(generic.UpdateView):
+    model = Review
+    fields = ["rating", "headline", "body"]
+    template_name = "update_review.html"
+
+
 class ReviewDetailView(generic.DetailView):
     model = Review
