@@ -98,7 +98,7 @@ class TicketUpdateView(generic.UpdateView):
 class TicketDeleteView(generic.edit.DeleteView):
     model = Ticket
     success_url = reverse_lazy("catalog:my-post")
-    template_name = "confirm_delete.html"
+    template_name = "confirm_delete_ticket.html"
 
 
 class TicketDetailView(generic.DetailView):
