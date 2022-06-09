@@ -9,10 +9,15 @@ from catalog.models import Ticket, Review
 def feed(request):
     tickets_list = list(Ticket.objects.all().order_by("time_created"))
     reviews_list = list(Review.objects.all().order_by("time_created"))
+    id_list_of_ticket_with_review = []
+    for review in reviews_list:
+        if review.ticket:
+            id_list_of_ticket_with_review.append(review.ticket.id)
     posts_list = tickets_list + reviews_list
     posts_list.sort(key=lambda r: r.time_created, reverse=True)
     context = {
         "posts_list": posts_list,
+        "id_list_of_ticket_with_review": id_list_of_ticket_with_review,
     }
     return render(request, "feed.html", context=context)
 
