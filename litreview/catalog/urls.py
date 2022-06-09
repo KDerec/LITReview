@@ -15,10 +15,13 @@ urlpatterns = [
     path("ticket/<int:pk>", views.TicketDetailView.as_view(), name="ticket-detail"),
     path("create-review/", views.create_review, name="create-review"),
     path(
+        "create-review/<int:pk>", views.create_review, name="create-review-from-ticket"
+    ),
+    path(
         "update-review/<int:pk>", views.ReviewUpdateView.as_view(), name="update-review"
     ),
     path(
-        "create-review/<int:pk>", views.create_review, name="create-review-from-ticket"
+        "delete-review/<int:pk>", views.ReviewDeleteView.as_view(), name="delete-review"
     ),
     path("review/<int:pk>", views.ReviewDetailView.as_view(), name="review-detail"),
 ]

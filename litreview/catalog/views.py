@@ -117,5 +117,11 @@ class ReviewUpdateView(generic.UpdateView):
     template_name = "update_review.html"
 
 
+class ReviewDeleteView(generic.edit.DeleteView):
+    model = Review
+    success_url = reverse_lazy("catalog:my-post")
+    template_name = "confirm_delete_review.html"
+
+
 class ReviewDetailView(generic.DetailView):
     model = Review
