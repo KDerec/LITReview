@@ -88,6 +88,12 @@ class TicketForm(ModelForm):
         fields = ["title", "description", "image"]
 
 
+class TicketUpdateView(generic.UpdateView):
+    model = Ticket
+    fields = ["title", "description", "image"]
+    template_name = "update_ticket.html"
+
+
 class TicketDetailView(generic.DetailView):
     model = Ticket
 
