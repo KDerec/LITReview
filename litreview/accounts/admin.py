@@ -1,3 +1,5 @@
 from django.contrib import admin
+from accounts.models import UserFollows
 
-# Register your models here.
+
+admin.site.register(UserFollows)

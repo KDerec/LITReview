@@ -4,26 +4,6 @@ from django.conf import settings
 from django.urls import reverse
 
 
-class UserFollows(models.Model):
-    user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="following"
-    )
-    followed_user = models.ForeignKey(
-        settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="followed_by"
-    )
-
-    class Meta:
-        # ensures we don't get multiple UserFollows instances
-        # for unique user-user_followed pairs
-        unique_together = (
-            "user",
-            "followed_user",
-        )
-
-    def __str__(self):
-        return f"{self.user}, {self.followed_user}"
-
-
 class Ticket(models.Model):
     title = models.CharField(
         max_length=128, help_text="Insérez le titre du livre ou de l'article."
