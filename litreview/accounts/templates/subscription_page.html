@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}<title>Mes abonnements</title>{% endblock %}
+
+{% block content %}
+<h2>Suivre d'autres utilisateurs</h2>
+<form method="post">
+    {% csrf_token %}
+    <select name="" id="">
+        {% for user in users %}
+        <option value={{user.id}}>{{user}}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Envoyer">
+</form>
+<h2>Abonnements</h2>
+<h2>Abonnés</h2>
+{% endblock %}
