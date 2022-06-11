@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 from django.http import HttpResponseRedirect
+from accounts.models import UserFollows
 
 
 def redirect_view(request):
@@ -20,8 +21,17 @@ class SignUpView(generic.CreateView):
 
 
 def subscription(request):
-    user = get_user_model()
-    users = user.objects.exclude(username="admin").order_by("username")
+    followed_users = UserFollows.objects.all().filter(user=request.user)
+    followed_users_list = []
+    for user in followed_users:
+        followed_users_list.append(user.followed_user)
+    users = (
+        get_user_model()
+        .objects.exclude(username="admin")
+        .exclude(username__in=followed_users_list)
+        .exclude(username=request.user.username)
+        .order_by("username")
+    )
     context = {
         "users": users,
     }
