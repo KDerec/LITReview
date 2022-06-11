@@ -21,7 +21,8 @@ class SignUpView(generic.CreateView):
 
 
 def subscription(request):
-    followed_users = UserFollows.objects.all().filter(user=request.user)
+    connected_user = request.user
+    followed_users = UserFollows.objects.all().filter(user=connected_user)
     followed_users_list = []
     for user in followed_users:
         followed_users_list.append(user.followed_user)
@@ -29,10 +30,21 @@ def subscription(request):
         get_user_model()
         .objects.exclude(username="admin")
         .exclude(username__in=followed_users_list)
-        .exclude(username=request.user.username)
+        .exclude(username=connected_user.username)
         .order_by("username")
     )
     context = {
         "users": users,
     }
+    if request.method == "POST":
+        id_selected_user_to_follow = request.POST.get("users-list")
+        user_to_follow = users.filter(id=id_selected_user_to_follow)[0]
+        create_user_follow(user_to_follow, connected_user)
+        return HttpResponseRedirect("")
+
     return render(request, "subscription_page.html", context=context)
+
+
+def create_user_follow(user_to_follow, connected_user):
+    new_user_follow = UserFollows(user=connected_user, followed_user=user_to_follow)
+    new_user_follow.save()
