@@ -6,13 +6,23 @@
 <h2>Suivre d'autres utilisateurs</h2>
 <form method="post">
     {% csrf_token %}
-    <select id="id-users-list" name="users-list">
-        {% for user in users %}
+    <select id="id-followable-users-list" name="followable-users">
+        {% for user in followable_users %}
         <option value={{user.id}}>{{user}}</option>
         {% endfor %}
     </select>
     <input type="submit" value="Envoyer">
 </form>
 <h2>Abonnements</h2>
+<ul id="subscriptions-list">
+    {% for user in followed_users_list %}
+    <li>{{ user }}</li>
+    {% endfor %}
+</ul>
 <h2>Abonnés</h2>
+<ul id="subscribers-list">
+    {% for user in subscriber_list %}
+    <li>{{ user }}</li>
+    {% endfor %}
+</ul>
 {% endblock %}
