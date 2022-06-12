@@ -4,17 +4,29 @@ from django.forms import ModelForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
 from catalog.models import Ticket, Review
+from accounts.models import UserFollows
 
 
 def feed(request):
-    tickets_list = list(Ticket.objects.all().order_by("time_created"))
-    reviews_list = list(Review.objects.all().order_by("time_created"))
+    connected_user = request.user
+    followed_users_list = []
+    followed_users = list(UserFollows.objects.all().filter(user=connected_user))
+    for user in followed_users:
+        followed_users_list.append(user.followed_user)
+    current_user_tickets_list = list(Ticket.objects.all().filter(user=connected_user).order_by("time_created"))
+    followed_users_tickets_list = list(Ticket.objects.all().filter(user__in=followed_users_list).order_by("time_created"))
+    current_user_reviews_list = list(Review.objects.all().filter(user=connected_user).order_by("time_created"))
+    followed_users_reviews_list = list(Review.objects.all().filter(user__in=followed_users_list).order_by("time_created"))
     id_list_of_ticket_with_review = []
+    reviews_list = list(Review.objects.all())
+    posts_list = followed_users_tickets_list + followed_users_reviews_list + current_user_tickets_list + current_user_reviews_list
     for review in reviews_list:
         if review.ticket:
             id_list_of_ticket_with_review.append(review.ticket.id)
-    posts_list = tickets_list + reviews_list
-    posts_list.sort(key=lambda r: r.time_created, reverse=True)
+            if review.ticket.user == connected_user and review not in posts_list:
+                posts_list.append(review)
+
+    posts_list.sort(key=lambda post: post.time_created, reverse=True)
     context = {
         "posts_list": posts_list,
         "id_list_of_ticket_with_review": id_list_of_ticket_with_review,
