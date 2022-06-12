@@ -54,3 +54,10 @@ def subscription(request):
 def create_user_follow(user_to_follow, connected_user):
     new_user_follow = UserFollows(user=connected_user, followed_user=user_to_follow)
     new_user_follow.save()
+
+
+def delete_user_follows(request, pk):
+    if request.method == "POST":
+        UserFollows.objects.all().filter(user=request.user, followed_user=pk).delete()
+
+    return HttpResponseRedirect("/accounts/subscription/")
