@@ -4,6 +4,7 @@
 
 {% block content %}
 <h2>Suivre d'autres utilisateurs</h2>
+{% if followable_users %}
 <form method="post">
     {% csrf_token %}
     <select id="id-followable-users-list" name="followable-users">
@@ -13,6 +14,9 @@
     </select>
     <input type="submit" value="Envoyer">
 </form>
+{% else %}
+<p>Vous suivez déjà tous les utilisateurs de LITReview.</p>
+{% endif %}
 <h2>Abonnements</h2>
 {% if followed_users_list %}
 <ul id="subscriptions-list">
