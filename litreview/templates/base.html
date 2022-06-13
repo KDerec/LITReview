@@ -20,7 +20,7 @@
                 <a href="/">Flux</a>
                 <a href="{% url 'catalog:my-post' %}">Posts</a>
                 <a href="{% url 'accounts:subscription' %}">Abonnements</a>
-                <a href="{% url 'accounts:logout' %}">Se déconnecter</a>
+                <a href="{% url 'accounts:logout' %}">Se déconnecter ({{user}})</a>
             </div>
             {% endif %}
         </nav>

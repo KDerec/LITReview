@@ -6,7 +6,7 @@
 <h1>Créer une critique</h1>
 {% if ticket %}
 <h2>Vous êtes en train de poster en réponse à</h2>
-<section class="ticket">
+<div class="ticket">
     <h3>{{ ticket.user }} a demandé une critique</h3>
     <p>{{ ticket.time_created }}</p>
     <h4>{{ ticket.title }}</h4>
@@ -14,7 +14,7 @@
     {% if ticket.image %}
     <img src="{{ ticket.image.url }}">
     {% endif %}
-</section>
+</div>
 {% else %}
 <h2>Livre / Article</h2>
 {% endif %}
@@ -25,6 +25,6 @@
     {{ ticket_form.as_p }}
     {% endif %}
     {{ review_form.as_p }}
-    <input type="submit" value="Save">
+    <input type="submit" value="Envoyer">
 </form>
 {% endblock %}
