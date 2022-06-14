@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.admindocs",
     "catalog.apps.CatalogConfig",
     "accounts.apps.AccountsConfig",
 ]
@@ -57,7 +58,11 @@ ROOT_URLCONF = "litreview.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / "templates", BASE_DIR / "catalog/templates/catalog"],
+        "DIRS": [
+            BASE_DIR / "templates",
+            BASE_DIR / "catalog/templates/catalog",
+            BASE_DIR / "accounts/templates",
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [

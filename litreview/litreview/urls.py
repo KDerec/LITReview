@@ -16,20 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+from django.views.generic import RedirectView
 
 
 urlpatterns = [
+    path("", RedirectView.as_view(url="/accounts/", permanent=True)),
+    path("admin/doc/", include("django.contrib.admindocs.urls")),
     path("admin/", admin.site.urls),
     path("accounts/", include(("accounts.urls", "accounts"), namespace="accounts")),
     path("catalog/", include(("catalog.urls", "catalog"), namespace="catalog")),
 ]
 
-# Add URL maps to redirect the base URL to our application
-from django.views.generic import RedirectView
-
-urlpatterns += [
-    path("", RedirectView.as_view(url="/accounts/", permanent=True)),
-]
 
 # Use static() to add url mapping to serve static files during development (only)
 from django.conf import settings
