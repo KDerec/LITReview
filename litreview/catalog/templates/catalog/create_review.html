@@ -5,16 +5,8 @@
 {% block content %}
 <h1>Créer une critique</h1>
 {% if ticket %}
-<h2>Vous êtes en train de poster en réponse à</h2>
-<div class="ticket">
-    <h3>{{ ticket.user }} a demandé une critique</h3>
-    <p>{{ ticket.time_created }}</p>
-    <h4>{{ ticket.title }}</h4>
-    <p>{{ ticket.description }}</p>
-    {% if ticket.image %}
-    <img src="{{ ticket.image.url }}">
-    {% endif %}
-</div>
+<h2>Vous êtes en train de poster en réponse à :</h2>
+{% include "ticket.html" %}
 {% else %}
 <h2>Livre / Article</h2>
 {% endif %}
