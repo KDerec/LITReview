@@ -34,9 +34,9 @@
 <p>Vous ne suivez aucun utilisateur.</p>
 {% endif %}
 <h2>Abonnés</h2>
-{% if subscriber_list %}
+{% if subscribers_list %}
 <ul id="subscribers-list">
-    {% for user in subscriber_list %}
+    {% for user in subscribers_list %}
     <li>{{ user }}</li>
     {% endfor %}
 </ul>

@@ -22,14 +22,8 @@ class SignUpView(generic.CreateView):
 
 def subscription(request):
     connected_user = request.user
-    followed_users_list = []
-    subscriber_list = []
-    followed_users = UserFollows.objects.all().filter(user=connected_user)
-    subscribed_users = UserFollows.objects.all().filter(followed_user=connected_user)
-    for user in followed_users:
-        followed_users_list.append(user.followed_user)
-    for user in subscribed_users:
-        subscriber_list.append(user.user)
+    followed_users_list = create_followed_users_list(connected_user)
+    subscribers_list = create_subscribers_list(connected_user)
     followable_users = (
         get_user_model()
         .objects.exclude(username="admin")
@@ -37,23 +31,50 @@ def subscription(request):
         .exclude(username=connected_user.username)
         .order_by("username")
     )
+
     context = {
         "followable_users": followable_users,
         "followed_users_list": followed_users_list,
-        "subscriber_list": subscriber_list,
+        "subscribers_list": subscribers_list,
     }
+
     if request.method == "POST":
-        id_selected_user_to_follow = request.POST.get("followable-users")
-        user_to_follow = followable_users.filter(id=id_selected_user_to_follow)[0]
+        user_to_follow = select_user_to_follow(request, followable_users)
         create_user_follow(user_to_follow, connected_user)
+
         return HttpResponseRedirect("")
 
     return render(request, "subscription_page.html", context=context)
 
 
+def create_followed_users_list(user):
+    followed_users_list = []
+    followed_users = UserFollows.objects.all().filter(user=user)
+    for user in followed_users:
+        followed_users_list.append(user.followed_user)
+
+    return followed_users_list
+
+
+def create_subscribers_list(user):
+    subscribers_list = []
+    subscribed_users = UserFollows.objects.all().filter(followed_user=user)
+    for user in subscribed_users:
+        subscribers_list.append(user.user)
+
+    return subscribers_list
+
+
+def select_user_to_follow(request, queryset_of_users):
+    id_user_to_follow = request.POST.get("followable-users")
+    user_to_follow = queryset_of_users.filter(id=id_user_to_follow)[0]
+
+    return user_to_follow
+
+
 def create_user_follow(user_to_follow, connected_user):
     new_user_follow = UserFollows(user=connected_user, followed_user=user_to_follow)
-    new_user_follow.save()
+    UserFollows(user=connected_user, followed_user=user_to_follow).save()
 
 
 def delete_user_follows(request, pk):
