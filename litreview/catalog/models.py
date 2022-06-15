@@ -5,11 +5,13 @@ from django.urls import reverse
 
 
 class Ticket(models.Model):
+    """Stores a ticket related to :model:`auth.User`."""
+
     title = models.CharField(
-        max_length=128, help_text="Insérez le titre du livre ou de l'article."
+        max_length=128, help_text="Titre du livre ou de l'article de la demande."
     )
     description = models.TextField(
-        max_length=2048, blank=True, help_text="Exprimez votre demande."
+        max_length=2048, blank=True, help_text="Description relative à la demande."
     )
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     image = models.ImageField(upload_to="images/", null=True, blank=True)
@@ -23,17 +25,20 @@ class Ticket(models.Model):
 
 
 class Review(models.Model):
+    """
+    Stores a review related to a :model:`catalog.Ticket` and
+    :model:`auth.User`.
+    """
+
     ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
     rating = models.PositiveSmallIntegerField(
         validators=[MinValueValidator(0), MaxValueValidator(5)],
-        help_text="Renseignez une note allant de 0 à 5.",
+        help_text="Note de la critique allant de 1 à 5.",
     )
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    headline = models.CharField(
-        max_length=128, help_text="Renseignez un titre à votre critique."
-    )
+    headline = models.CharField(max_length=128, help_text="Titre de la critique.")
     body = models.TextField(
-        max_length=8192, blank=True, help_text="Renseignez votre critique."
+        max_length=8192, blank=True, help_text="Corps de la critique."
     )
     time_created = models.DateTimeField(auto_now_add=True)
 

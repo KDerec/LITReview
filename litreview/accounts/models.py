@@ -3,6 +3,8 @@ from django.conf import settings
 
 
 class UserFollows(models.Model):
+    """Stores a unique pair of :model:`auth.User`."""
+
     user = models.ForeignKey(
         settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="following"
     )

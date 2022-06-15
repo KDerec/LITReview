@@ -14,6 +14,13 @@ from .review_view import (
 
 
 def feed(request):
+    """
+    Display tickets and reviews of the connected user and users he is following.
+
+    **Templates:**
+
+    :template:`feed.html`
+    """
     connected_user = request.user
     followed_users_list = create_followed_users_list(connected_user)
     current_user_tickets_list = create_user_tickets_list(connected_user)
@@ -46,6 +53,13 @@ def feed(request):
 
 
 def my_post(request):
+    """
+    Display tickets and reviews of the connected user.
+
+    **Templates:**
+
+    :template:`my_post.html`
+    """
     connected_user = request.user
     current_user_tickets_list = create_user_tickets_list(connected_user)
     current_user_reviews_list = create_user_reviews_list(connected_user)
@@ -59,5 +73,5 @@ def my_post(request):
 
 
 def sort_posts_list_by_time_created(posts_list):
-
+    """Return posts list sorted by "time_created" attribut."""
     return sorted(posts_list, key=lambda post: post.time_created, reverse=True)
