@@ -15,7 +15,7 @@
     {% if post.title %}
     <li class="ticket-object">
         {% include "ticket.html"%}
-        {% if post.id not in id_list_of_ticket_with_review %}
+        {% if post.id not in ticket_id_list_with_review %}
         <a href="{% url 'catalog:create-review-from-ticket' post.id %}"><button type="button">Créer une
                 critique</button></a>
         {% endif %}
