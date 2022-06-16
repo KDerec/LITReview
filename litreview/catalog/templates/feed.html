@@ -5,9 +5,9 @@
 {% endblock %}
 
 {% block content %}
-<div id="buttons">
-    <a href="{% url 'catalog:create-ticket' %}"><button type="button">Demander une critique</button></a>
-    <a href="{% url 'catalog:create-review' %}"><button type="button">Créer une critique</button></a>
+<div id="top-feed-buttons">
+    <a href="{% url 'catalog:create-ticket' %}"><button class="buttons" type="button">Demander une critique</button></a>
+    <a href="{% url 'catalog:create-review' %}"><button class="buttons" type="button">Créer une critique</button></a>
 </div>
 {% if posts_list %}
 <ul id="feed">
@@ -29,6 +29,6 @@
     {% endfor %}
 </ul>
 {% else %}
-<p>Il n'y a pas de ticket ni de critique.</p>
+<p>Vous n'avez pas écrit de ticket ou de critique et vos abonnements non plus.</p>
 {% endif %}
 {% endblock %}
