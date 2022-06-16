@@ -42,21 +42,27 @@ a {
 #feed {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     list-style-type: none;
 }
 
-.ticket-object {
+[class*="ticket-object"] {
     border: 1px;
     border-style: solid;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    padding: 1rem;
-    list-style-type: none;
+    margin: 2% 10% 2% 10%;
+    padding: 2%;
+}
+
+.ticket-object-in-review {
+    margin: 2% 0% 2% 0%;
 }
 
 .review-object {
     border: 1px;
     border-style: solid;
+    margin: 2% 10% 2% 10%;
+    padding: 2%;
+}
 
 #top-feed-buttons {
     display: flex;

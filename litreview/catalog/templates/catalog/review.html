@@ -1,9 +1,13 @@
 {% if post %}
+{% if post.user == user %}
+<h1>Vous avez publié une critique.</h1>
+{% else %}
 <h1>{{ post.user }} a publié une critique.</h1>
+{% endif %}
 <p>{{ post.time_created }}</p>
 <h2>{{ post.headline }} - {{post.rating}}/5</h2>
 <p>{{ post.body }}</p>
-<div class="ticket-object">
+<div class="ticket-object-in-review">
     <h1>Ticket - {{ post.ticket.user }}</h1>
     <p>{{ post.ticket.time_created }}</p>
     <h2>{{ post.ticket.title }}</h2>
@@ -15,11 +19,15 @@
 
 {% if review %}
 <div class="review-object">
+    {% if review.user == user %}
+    <h1>Vous avez publié une critique.</h1>
+    {% else %}
     <h1>{{ review.user }} a publié une critique.</h1>
+    {% endif %}
     <p>{{ review.time_created }}</p>
     <h2>{{ review.headline }} - {{review.rating}}/5</h2>
     <p>{{ review.body }}</p>
-    <div class="ticket-object">
+    <div class="ticket-object-in-review">
         <h1>Ticket - {{ review.ticket.user }}</h1>
         <p>{{ review.ticket.time_created }}</p>
         <h2>{{ review.ticket.title }}</h2>
