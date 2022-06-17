@@ -7,7 +7,7 @@
     {% endif %}
     <p>{{ post.time_created }}</p>
 </div>
-<h2>{{ post.headline }} - {{post.rating}}/5</h2>
+<h2>{{ post.headline }} - {{post.return_star_rating}}</h2>
 <p>{{ post.body }}</p>
 <div class="ticket-object-in-review">
     {% if post.ticket.user == user %}
@@ -32,7 +32,7 @@
         {% endif %}
         <p>{{ review.time_created }}</p>
     </div>
-    <h2>{{ review.headline }} - {{review.rating}}/5</h2>
+    <h2>{{ review.headline }} - {{review.return_star_rating}}</h2>
     <p>{{ review.body }}</p>
     <div class="ticket-object-in-review">
         {% if review.ticket.user == user %}

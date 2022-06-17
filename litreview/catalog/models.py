@@ -30,9 +30,14 @@ class Review(models.Model):
     :model:`auth.User`.
     """
 
+    rating_min_value = 0
+    rating_max_value = 5
     ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
     rating = models.PositiveSmallIntegerField(
-        validators=[MinValueValidator(0), MaxValueValidator(5)],
+        validators=[
+            MinValueValidator(rating_min_value),
+            MaxValueValidator(rating_max_value),
+        ],
         help_text="Note de la critique allant de 1 à 5.",
     )
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
@@ -47,3 +52,13 @@ class Review(models.Model):
 
     def get_absolute_url(self):
         return reverse("catalog:review-detail", args=[str(self.id)])
+
+    def return_star_rating(self):
+        """Return a string of unicode star according to self rating."""
+        stars = ""
+        for i in range(self.rating):
+            stars = stars + "★"
+        while len(stars) < self.rating_max_value:
+            stars = stars + "☆"
+
+        return stars
