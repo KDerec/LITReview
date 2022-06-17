@@ -1,14 +1,24 @@
+from django import forms
 from django.shortcuts import render
 from django.views import generic
 from django.http import HttpResponseRedirect
-from django.forms import ModelForm
 from django.urls import reverse_lazy
 from catalog.models import Review
 from .ticket_view import TicketForm, create_context_with_ticket_according_to_pk
 
 
-class ReviewForm(ModelForm):
+class ReviewForm(forms.ModelForm):
     """Create a Form class from Review model."""
+
+    choices = [
+        (0, "0"),
+        (1, "1"),
+        (2, "2"),
+        (3, "3"),
+        (4, "4"),
+        (5, "5"),
+    ]
+    rating = forms.ChoiceField(choices=choices, widget=forms.RadioSelect)
 
     class Meta:
         model = Review
