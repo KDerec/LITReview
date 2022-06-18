@@ -11,6 +11,10 @@ html {
     line-height: 1.75;
 }
 
+h1 {
+    text-align: center;
+}
+
 img {
     width: 100%;
     max-width: 150px;
@@ -21,6 +25,10 @@ a {
     color: inherit;
 }
 
+.helptext {
+    font-size: 0.8rem;
+    font-weight: normal;
+}
 
 .buttons {
     cursor: pointer;
@@ -38,6 +46,8 @@ a {
     color: white;
 }
 
+
+/* NAVBAR STYLE */
 #navbar {
     display: flex;
     flex-wrap: wrap;
@@ -55,6 +65,50 @@ a {
 
 #logo {
     margin-left: 50%;
+}
+
+/* HOME PAGE STYLE */
+#home-page {
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+}
+
+#signup {
+    text-align: center;
+}
+
+#signup p {
+    font-weight: bold;
+    white-space: pre-line;
+}
+
+#signup li {
+    font-size: 0.8rem;
+}
+
+#signup button {
+    margin: 1rem;
+}
+
+
+/* FEED PAGE STYLE */
+#top-feed-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-top: 1rem;
+}
+
+
+/* POST, REVIEW, TICKET STYLE */
+.post-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-bottom {
+    text-align: right;
 }
 
 [class*="ticket-object"] {
