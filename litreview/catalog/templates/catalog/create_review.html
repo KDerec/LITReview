@@ -3,20 +3,22 @@
 {% block title %}<title>Créer une critique</title>{% endblock %}
 
 {% block content %}
-<h1>Créer une critique</h1>
-{% if ticket %}
-<h2>Vous êtes en train de poster en réponse à :</h2>
-{% include "ticket.html" %}
-{% else %}
-<h2>Livre / Article</h2>
-{% endif %}
-
-<form enctype="multipart/form-data" method="post">
-    {% csrf_token %}
-    {% if ticket_form %}
-    {{ ticket_form.as_p }}
+<div class="create-object-form">
+    <h1>Créer une critique</h1>
+    {% if ticket %}
+    <h2>Vous êtes en train de poster en réponse à :</h2>
+    {% include "ticket.html" %}
+    {% else %}
+    <h2>Livre / Article</h2>
     {% endif %}
-    {{ review_form.as_p }}
-    <input class="buttons" type="submit" value="Envoyer">
-</form>
+    <form enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        {% if ticket_form %}
+        {{ ticket_form.as_p }}
+        <hr>
+        {% endif %}
+        {{ review_form.as_p }}
+        <input class="buttons" type="submit" value="Envoyer">
+    </form>
+</div>
 {% endblock %}

@@ -3,10 +3,12 @@
 {% block title %}<title>Modification critique</title>{% endblock %}
 
 {% block content %}
-<h1>Modification critique</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input class="buttons" type="submit" value="Envoyer">
-</form>
+<div class="create-object-form">
+    <h1>Modification critique</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="buttons" type="submit" value="Envoyer">
+    </form>
+</div>
 {% endblock %}

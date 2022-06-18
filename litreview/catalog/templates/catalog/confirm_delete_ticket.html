@@ -3,11 +3,13 @@
 {% block title %}<title>Suppression ticket</title>{% endblock %}
 
 {% block content %}
-<form method="post">{% csrf_token %}
-    <p>Confirmez-vous la suppresion du ticket ci-dessous ?</p>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input class="buttons" type="submit" value="Confirmer">
-</form>
-{% include "ticket.html" %}
+<div class="delete-object-form">
+    <h1>Confirmez-vous la suppresion du ticket ci-dessous ?</h1>
+    <form method="post">{% csrf_token %}
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="buttons" type="submit" value="Confirmer">
+    </form>
+    {% include "ticket.html" %}
+</div>
 {% endblock %}

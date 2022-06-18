@@ -25,7 +25,17 @@ a {
     color: inherit;
 }
 
+hr {
+    width: 90%;
+    margin: 1rem 0 1rem;
+}
+
+label {
+    display: block;
+}
+
 .helptext {
+    display: block;
     font-size: 0.8rem;
     font-weight: normal;
 }
@@ -80,7 +90,6 @@ a {
 
 #signup p {
     font-weight: bold;
-    white-space: pre-line;
 }
 
 #signup li {
@@ -89,6 +98,35 @@ a {
 
 #signup button {
     margin: 1rem;
+}
+
+
+/* OBJECT FORM STYLE */
+.create-object-form {
+    margin-left: 10%;
+}
+
+.create-object-form input.buttons {
+    float: right;
+    margin-right: 10%;
+}
+
+.delete-object-form input.buttons {
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#id_title,
+#id_headline,
+#id_description,
+#id_body {
+    width: 90%;
+}
+
+#id_rating {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 
@@ -116,6 +154,7 @@ a {
     border-style: solid;
     margin: 2% 10% 2% 10%;
     padding: 2%;
+    overflow-wrap: break-word;
 }
 
 .ticket-object-in-review {
@@ -127,6 +166,7 @@ a {
     border-style: solid;
     margin: 2% 10% 2% 10%;
     padding: 2%;
+    overflow-wrap: break-word;
 }
 
 

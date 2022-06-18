@@ -3,11 +3,13 @@
 {% block title %}<title>Suppression critique</title>{% endblock %}
 
 {% block content %}
-<form method="post">{% csrf_token %}
-    <p>Confirmez-vous la suppresion de la critique ci-dessous ?</p>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input class="buttons" type="submit" value="Confirmer">
-</form>
-{% include "review.html" %}
+<div class="delete-object-form">
+    <h1>Confirmez-vous la suppresion de la critique ci-dessous ?</h1>
+    <form method="post">{% csrf_token %}
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input class="buttons" type="submit" value="Confirmer">
+    </form>
+    {% include "review.html" %}
+</div>
 {% endblock %}
