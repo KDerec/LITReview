@@ -7,7 +7,28 @@
     <h1>Modification ticket</h1>
     <form enctype="multipart/form-data" method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {% for field in form %}
+        {% if field.name == "image" %}
+        <p>
+            <label for="id_image">Image:</label>
+            {% if object.image %}
+            <img src="{{ object.image.url }}">
+            <br> Currently: <a href="{{ object.image.url }}">{{ object.image.url }}</a>
+            <input type="checkbox" name="image-clear" id="image-clear_id"> Check to clear
+            <br> Change:
+            {% endif %}
+            <input type="file" name="image" image="image" accept="image/*" id="id_image">
+        </p>
+        {% else %}
+        <p>
+            <label for="id_{{ field.name }}">{{ field.name | capfirst }}:</label>
+            {{ field }}
+            {% if field.help_text %}
+            <span class="helptext">{{ field.help_text|safe }}</span>
+            {% endif %}
+        </p>
+        {% endif %}
+        {% endfor %}
         <input class="buttons" type="submit" value="Envoyer">
     </form>
 </div>
