@@ -124,6 +124,10 @@ label {
     width: 90%;
 }
 
+#id_title {
+    text-align: center;
+}
+
 #id_rating {
     display: flex;
     justify-content: space-evenly;
