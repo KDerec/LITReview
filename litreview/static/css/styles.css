@@ -21,6 +21,23 @@ a {
     color: inherit;
 }
 
+
+.buttons {
+    cursor: pointer;
+    font-size: 100%;
+    background-color: #ddd;
+    border-radius: 8px;
+    padding: 0.5rem;
+    border: none;
+    transition: 0.3s;
+
+}
+
+.buttons:hover {
+    background-color: #6d6d6d;
+    color: white;
+}
+
 #navbar {
     display: flex;
     flex-wrap: wrap;

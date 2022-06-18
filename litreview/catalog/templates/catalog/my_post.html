@@ -1,30 +1,39 @@
 {% extends "base.html" %}
 
 {% block title %}
-<title>Mes publications</title>
+<title>Vos posts</title>
 {% endblock %}
 
 {% block content %}
+<h1>Vos posts</h1>
 {% if posts_list %}
 <ul id="feed">
     {% for post in posts_list %}
     {% if post.title %}
     <li class="ticket-object">
         {% include "ticket.html"%}
-        <a href="{% url 'catalog:update-ticket' post.id %}"><button type="button">Modifier</button></a>
-        <a href="{% url 'catalog:delete-ticket' post.id %}"><button type="button">Supprimer</button></a>
+        <div class="post-bottom">
+            <a href="{% url 'catalog:update-ticket' post.id %}"><button class="buttons"
+                    type="button">Modifier</button></a>
+            <a href="{% url 'catalog:delete-ticket' post.id %}"><button class="buttons"
+                    type="button">Supprimer</button></a>
+        </div>
     </li>
     {% endif %}
     {% if post.headline %}
     <li class="review-object">
         {% include "review.html" %}
-        <a href="{% url 'catalog:update-review' post.id %}"><button type="button">Modifier</button></a>
-        <a href="{% url 'catalog:delete-review' post.id %}"><button type="button">Supprimer</button></a>
+        <div class="post-bottom">
+            <a href="{% url 'catalog:update-review' post.id %}"><button class="buttons"
+                    type="button">Modifier</button></a>
+            <a href="{% url 'catalog:delete-review' post.id %}"><button class="buttons"
+                    type="button">Supprimer</button></a>
+        </div>
     </li>
     {% endif %}
     {% endfor %}
 </ul>
 {% else %}
-<p>Vous n'avez pas écrit de ticket ni de critique.</p>
+<p>Vous n'avez pas écrit de ticket ou de critique.</p>
 {% endif %}
 {% endblock %}

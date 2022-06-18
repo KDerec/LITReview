@@ -12,7 +12,7 @@
         <option value={{user.id}}>{{user}}</option>
         {% endfor %}
     </select>
-    <input type="submit" value="Envoyer">
+            <input class="buttons" type="submit" value="Envoyer">
 </form>
 {% else %}
 <p>Vous suivez déjà tous les utilisateurs de LITReview.</p>
@@ -25,7 +25,7 @@
         {{ user }}
         <form method="POST" action="{% url 'accounts:delete-user-follow' user.id %}">
             {% csrf_token %}
-            <input type="submit" value="Désabonner">
+                    <input class="buttons" type="submit" value="Désabonner">
         </form>
     </li>
     {% endfor %}

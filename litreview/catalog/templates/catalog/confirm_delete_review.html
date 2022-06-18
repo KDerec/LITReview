@@ -7,7 +7,7 @@
     <p>Confirmez-vous la suppresion de la critique ci-dessous ?</p>
     {% csrf_token %}
     {{ form.as_p }}
-    <input type="submit" value="Confirmer">
+    <input class="buttons" type="submit" value="Confirmer">
 </form>
 {% include "review.html" %}
 {% endblock %}
