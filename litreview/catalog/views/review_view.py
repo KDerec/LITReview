@@ -35,7 +35,7 @@ class ReviewUpdateView(generic.UpdateView):
     """
 
     model = Review
-    fields = ["rating", "headline", "body"]
+    form_class = ReviewForm
     template_name = "update_review.html"
 
 

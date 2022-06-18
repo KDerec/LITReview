@@ -38,7 +38,7 @@ class Review(models.Model):
             MinValueValidator(rating_min_value),
             MaxValueValidator(rating_max_value),
         ],
-        help_text="Note de la critique allant de 1 à 5.",
+        help_text="Note de la critique allant de 0 à 5.",
     )
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     headline = models.CharField(max_length=128, help_text="Titre de la critique.")
