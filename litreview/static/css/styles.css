@@ -129,30 +129,31 @@ a {
     padding: 2%;
 }
 
-.post-header {
-    display: flex;
-    justify-content: space-between;
+
+/* SUBSCRIPTION PAGE STYLE */
+#subscription-page {
+    text-align: center;
 }
 
-#top-feed-buttons {
+#subscription-page li {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-}
-
-.buttons {
-    cursor: pointer;
-    font-size: 100%;
-    margin: 1rem 1rem 0rem 1rem;
+    justify-content: space-between;
     background-color: #ddd;
-    border-radius: 8px;
-    padding: 0.5rem;
-    border: none;
-    transition: 0.3s;
-
+    border: 1px;
+    border-style: solid;
+    margin: 2% 20% 2% 20%;
+    line-break: anywhere;
 }
 
-.buttons:hover {
-    background-color: #6d6d6d;
-    color: white;
+#id-followable-users-list {
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    margin-right: 1rem;
+}
+
+.user-name {
+    line-height: normal;
+    font-weight: bold;
+    padding: 0.5rem;
+    margin-left: 2%;
 }

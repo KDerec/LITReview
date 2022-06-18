@@ -3,44 +3,58 @@
 {% block title %}<title>Mes abonnements</title>{% endblock %}
 
 {% block content %}
-<h2>Suivre d'autres utilisateurs</h2>
-{% if followable_users %}
-<form method="post">
-    {% csrf_token %}
-    <select id="id-followable-users-list" name="followable-users">
-        {% for user in followable_users %}
-        <option value={{user.id}}>{{user}}</option>
-        {% endfor %}
-    </select>
-            <input class="buttons" type="submit" value="Envoyer">
-</form>
-{% else %}
-<p>Vous suivez déjà tous les utilisateurs de LITReview.</p>
-{% endif %}
-<h2>Abonnements</h2>
-{% if followed_users_list %}
-<ul id="subscriptions-list">
-    {% for user in followed_users_list %}
-    <li>
-        {{ user }}
-        <form method="POST" action="{% url 'accounts:delete-user-follow' user.id %}">
+<div id="subscription-page">
+    <section id="follow-other-user">
+        <h1>Suivre d'autres utilisateurs</h1>
+        {% if followable_users %}
+        <form method="post">
             {% csrf_token %}
-                    <input class="buttons" type="submit" value="Désabonner">
+            <select id="id-followable-users-list" name="followable-users">
+                {% for user in followable_users %}
+                <option value={{user.id}}>{{user}}</option>
+                {% endfor %}
+            </select>
+            <input class="buttons" type="submit" value="Envoyer">
         </form>
-    </li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>Vous ne suivez aucun utilisateur.</p>
-{% endif %}
-<h2>Abonnés</h2>
-{% if subscribers_list %}
-<ul id="subscribers-list">
-    {% for user in subscribers_list %}
-    <li>{{ user }}</li>
-    {% endfor %}
-</ul>
-{% else %}
-<p>Vous n'avez pas encore d'abonnés.</p>
-{% endif %}
+        {% else %}
+        <p>Vous suivez déjà tous les utilisateurs de LITReview.</p>
+        {% endif %}
+    </section>
+    <section id="subscription">
+        <h1>Abonnements</h1>
+        {% if followed_users_list %}
+        <ul id="subscriptions-list">
+            {% for user in followed_users_list %}
+            <li class="subscription-element">
+                <div class="user-name">
+                    {{ user }}
+                </div>
+                <form method="POST" action="{% url 'accounts:delete-user-follow' user.id %}">
+                    {% csrf_token %}
+                    <input class="buttons" type="submit" value="Désabonner">
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>Vous ne suivez aucun utilisateur.</p>
+        {% endif %}
+    </section>
+    <section id="subscriber">
+        <h1>Abonnés</h1>
+        {% if subscribers_list %}
+        <ul id="subscribers-list">
+            {% for user in subscribers_list %}
+            <li>
+                <div class="user-name">
+                    {{ user }}
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p>Vous n'avez pas encore d'abonnés.</p>
+        {% endif %}
+    </section>
+</div>
 {% endblock %}
