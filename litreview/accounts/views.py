@@ -60,7 +60,7 @@ def subscription(request):
         user_to_follow = select_user_to_follow(request, followable_users)
         create_user_follow(user_to_follow, connected_user)
 
-        return HttpResponseRedirect("")
+        return HttpResponseRedirect("/accounts/subscription/")
 
     return render(request, "subscription_page.html", context=context)
 
