@@ -179,6 +179,10 @@ label {
     text-align: center;
 }
 
+#subscription-page p {
+    margin-top: 2%;
+}
+
 #subscription-page li {
     display: flex;
     flex-wrap: wrap;
