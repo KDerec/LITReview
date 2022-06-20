@@ -36,6 +36,7 @@ class ReviewUpdateView(generic.UpdateView):
 
     model = Review
     form_class = ReviewForm
+    success_url = reverse_lazy("catalog:my-post")
     template_name = "update_review.html"
 
 
@@ -95,7 +96,7 @@ def create_review(request, pk=None):
                 new_review.ticket = new_ticket
             new_review.user = connected_user
             new_review.save()
-            return HttpResponseRedirect(new_review.get_absolute_url())
+            return HttpResponseRedirect("/catalog/")
 
     if not context:
         context["ticket_form"] = ticket_form

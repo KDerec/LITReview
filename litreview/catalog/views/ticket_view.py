@@ -15,6 +15,7 @@ class TicketCreateView(generic.edit.CreateView):
 
     model = Ticket
     template_name = "create_ticket.html"
+    success_url = reverse_lazy("catalog:feed")
     fields = ["title", "description", "image"]
 
     def form_valid(self, form):
@@ -44,6 +45,7 @@ class TicketUpdateView(generic.UpdateView):
 
     model = Ticket
     fields = ["title", "description", "image"]
+    success_url = reverse_lazy("catalog:my-post")
     template_name = "update_ticket.html"
 
 
