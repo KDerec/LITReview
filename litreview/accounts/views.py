@@ -57,8 +57,12 @@ def subscription(request):
     }
 
     if request.method == "POST":
-        user_to_follow = select_user_to_follow(request, followable_users)
-        create_user_follow(user_to_follow, connected_user)
+        user_to_follow = get_user_to_follow(request)
+        if user_to_follow:
+            create_user_follow(user_to_follow, connected_user)
+        else:
+            context["message"] = "Cet utilisateur n'existe pas."
+            return render(request, "subscription_page.html", context=context)
 
         return HttpResponseRedirect("/accounts/subscription/")
 
@@ -85,20 +89,16 @@ def create_subscribers_list(user):
     return subscribers_list
 
 
-def select_user_to_follow(request, queryset_of_users):
-    """
-    Found id of the user to follow in the request and return it from a queryset
-    of users.
-    """
-    id_user_to_follow = request.POST.get("followable-users")
-    user_to_follow = queryset_of_users.filter(id=id_user_to_follow)[0]
-
-    return user_to_follow
+def get_user_to_follow(request):
+    chosen_username = request.POST.get("followable-users-choice")
+    user_to_follow = get_user_model().objects.filter(username=chosen_username)
+    if user_to_follow:
+        return user_to_follow
 
 
 def create_user_follow(user_to_follow, connected_user):
     """Create an instance of UserFollow and save it in the db."""
-    UserFollows(user=connected_user, followed_user=user_to_follow).save()
+    UserFollows(user=connected_user, followed_user=user_to_follow[0]).save()
 
 
 def delete_user_follows(request, pk):

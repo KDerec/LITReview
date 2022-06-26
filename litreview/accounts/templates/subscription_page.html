@@ -7,13 +7,17 @@
     <section id="follow-other-user">
         <h1>Suivre d'autres utilisateurs</h1>
         {% if followable_users %}
+        <p>Double clique dans l'encart pour afficher la liste des utilisateurs.</p>
+        {{ message }}
         <form method="post">
             {% csrf_token %}
-            <select id="id-followable-users-list" name="followable-users">
+            <input list="followable-users-list" id="followable-users-choice" name="followable-users-choice"
+                autocomplete="off" />
+            <datalist id="followable-users-list">
                 {% for user in followable_users %}
-                <option value={{user.id}}>{{user}}</option>
+                <option value={{user}}>{{user}}</option>
                 {% endfor %}
-            </select>
+            </datalist>
             <input class="buttons" type="submit" value="Envoyer">
         </form>
         {% else %}
