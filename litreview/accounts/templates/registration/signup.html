@@ -10,6 +10,6 @@
         {{ form.as_p }}
         <button class="buttons" type="submit">S'inscrire</button>
     </form>
-    <a href="{{request.META.HTTP_REFERER}}"><button class="buttons" type="button">Retour</button></a>
+    <a href="{% url 'accounts:home' %}"><button class="buttons" type="button">Retour</button></a>
 </div>
 {% endblock %}
