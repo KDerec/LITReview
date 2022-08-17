@@ -3,14 +3,13 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://user.oc-static.com/upload/2020/09/18/16004297044411_P7.png">
+  <a href="https://github.com/KDerec/litreview/blob/master/images/logo.png">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">Develop a web application with Django</h3>
-
+<h3 align="center">Django Web application</h3>
   <p align="center">
-  Project to discover the Django framework by developing a web application and using server-side rendering in Django.
+    This student project is the #6 of my training.<br>You can follow the previous <a href="https://github.com/KDerec/algo-invest-trade">here</a> and next one <a href="https://github.com/KDerec/softdesk">here</a>.
   </p>
 </div>
 
@@ -19,15 +18,9 @@
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-    </li>
-    <li>
-      <a href="#installation">Installation</a>
-      <ul>
-        <li><a href="#python-installation">Python installation</a></li>
-      </ul>
-    </li>
+    <li><a href="#about-the-project">About The Project</a></li>
+    <li><a href="#built-with">Built With</a></li>
+    <li><a href="#installation">Installation</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -37,20 +30,56 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
+### 🌱 Developed skills
+- Using server-side rendering in **Django**.
+- Developing a web application using Django with **MVT structure** (Model-View_template).
+### 🚀 Project goal
+Create a **MVP** (Minimum Valuable Product) allowing a **community of users** to **consult** or **request book** and **articles reviews** on demand.  
 
-<img src="images/product_screenshot.png" alt="product">
+The application is based on a requirements specifications, <a href="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Python%20FR/P7%20-%20D%C3%A9veloppez%20une%20application%20Web%20en%20utilisant%20Django/LITReview%20-%20Wireframes%20-%20FR.html">wireframes</a> and a <a href="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Python+EN/Python+782+Develop+a+Web+Application+Using+Django/LITReview+-+Schema.html">database schema.</a>  
 
-Create a MVP (Minimum Valuable Product) allowing a community of users to consult or request book reviews on demand.
-<br>
-The application is based on a requirements specifications, a model and wireframes.
+<a href="https://github.com/KDerec/litreview/blob/master/images/website_in_action.gif"><img src="images/website_in_action.gif" alt="general-show-of-the-website" style="border:1px solid black; padding: 2%"></a>  
+
+
+<u>A user will need to:</u>
+- **Log in** and **sign up** - the site should not be accessible to a non-logged-in user.
+- **View a feed** containing the latest tickets and reviews from users that they follow ordered by time with the latest first.
+- **Create new tickets** requesting a review on a book/article.
+- **Create reviews** as a **response** to tickets.
+- Create reviews **not in** response to a ticket.  As part of a one-step process, the user will create a ticket and then a review responding to their own ticket.
+- Be able to **view**, **edit**, and **delete** their own **tickets** and **reviews**,
+- **Follow other users** by entering their username,
+- View who they follow and unfollow whoever they want. 
+
+
+<u>The site will need to:</u>
+- Have a **UI** matching those of the **wireframes**.
+- Have a **clean** and **minimal UI**.
+- Use **server-side** rendering to display information from the **database** on the page **dynamically**. 
+	
+<u>The codebase will need to:</u>
+- Use the **Django** framework.
+- Use the **Django template** language for server-side rendering.
+- Use **SQLite** as a local development DB.
+- Have a database design that matches the database schema and have syntax that meets **PEP8** guidelines. 
+
+
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+
+## Built With
+* [Python](https://www.python.org/)
+* [Django](https://www.djangoproject.com/)
+* [HTML](https://developer.mozilla.org/fr/docs/Web/HTML)
+* [CSS](https://developer.mozilla.org/fr/docs/Web/CSS) 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 <!-- GETTING STARTED -->
-
-### Installation
-
+## Installation
 1. <a href="#python-installation">Install Python</a> ;
 2. Clone the project in desired directory ;
    ```sh
@@ -111,8 +140,7 @@ The application is based on a requirements specifications, a model and wireframe
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-#### Python installation
-
+### Python installation
 1. Install Python. If you are using Linux or macOS, it should be available on your system already. If you are a Windows user, you can get an installer from the Python homepage and follow the instructions to install it:
    - Go to [python.org](https://www.python.org/)
    - Under the Download section, click the link for Python "3.xxx".
@@ -135,37 +163,41 @@ The application is based on a requirements specifications, a model and wireframe
 
 <!-- USAGE EXAMPLES -->
 ## Usage
+### **Sign up, log in & log out**
+Show an example of sign up to create login, log in with the created login and logout. 
 
-### Sign up, log in & log out
-Show an example of sign up to create login, log in with the created login and logout.
-<img src="images/signup_login.gif" alt="signup-login-usage-example">
+<a href="https://github.com/KDerec/litreview/blob/master/images/signup_login.gif"><img src="images/signup_login.gif" alt="signup-login-usage-example" style="border:1px solid black; padding: 2%"></a>  
 
-### Feed page
-Show a feed page with all tickets and reviews of books/articles from the connected user and his subscriptions.
-<img src="images/feed_page.gif" alt="feed-page-usage-example">
+### **Feed page**
+Show a feed page with all tickets and reviews of books/articles from the connected user and his subscriptions.  
 
-### Tickets creation
-Show a ticket creation with a title, description and image.
-<img src="images/ticket_creation.gif" alt="ticket-creation-usage-example">
+<a href="https://github.com/KDerec/litreview/blob/master/images/feed_page.gif"><img src="images/feed_page.gif" alt="feed-page-usage-example" style="border:1px solid black; padding: 2%"></a>  
 
-### Review creation
-Show a review creation not in response to a ticket and  as a response to a ticket.
-<img src="images/review_creation.gif" alt="review-creation-usage-example">
+### **Tickets creation**
+Show a ticket creation with a title, description and image.  
 
-### View, edit and delete own tickets and reviews
-Show an example of deletion and modification of ticket and review of the connected user.
-<img src="images/edit_delete_own.gif" alt="edit-delete-own-post-usage-example">
+<a href="https://github.com/KDerec/litreview/blob/master/images/ticket_creation.gif"><img src="images/ticket_creation.gif" alt="ticket-creation-usage-example" style="border:1px solid black; padding: 2%"></a>  
 
-### Subscription page
-Show how the user can subscribe and unsubscribe to other user and see his subscribers.
-<img src="images/subscription_page.gif" alt="edit-delete-own-post-usage-example">
+### **Review creation**
+Show a review creation not in response to a ticket and  as a response to a ticket.  
+
+<a href="https://github.com/KDerec/litreview/blob/master/images/review_creation.gif"><img src="images/review_creation.gif" alt="review-creation-usage-example" style="border:1px solid black; padding: 2%"></a>  
+
+### **View, edit and delete own tickets and reviews**
+Show an example of deletion and modification of ticket and review of the connected user.  
+
+<a href="https://github.com/KDerec/litreview/blob/master/images/edit_delete_own.gif"><img src="images/edit_delete_own.gif" alt="edit-delete-own-post-usage-example" style="border:1px solid black; padding: 2%"></a>  
+
+### **Subscription page**
+Show how the user can subscribe and unsubscribe to other user and see his subscribers.  
+
+<a href="https://github.com/KDerec/litreview/blob/master/images/subscription_page.gif"><img src="images/subscription_page.gif" alt="edit-delete-own-post-usage-example" style="border:1px solid black; padding: 2%"></a>  
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 <!-- LICENSE -->
 ## License
-
 Distributed under the MIT License. See `LICENSE` for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -173,9 +205,11 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
 ## Contact
-
 Kévin Dérécusson - kevin.derecusson@outlook.fr
 
 Project Link: [https://github.com/KDerec/litreview](https://github.com/KDerec/litreview)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
+
+
+ <i>This student project is the #6 of my training.<br>You can follow the previous <a href="https://github.com/KDerec/algo-invest-trade">here</a> and next one <a href="https://github.com/KDerec/softdesk">here</a>.</i>
