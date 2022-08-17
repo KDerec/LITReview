@@ -37,9 +37,9 @@
 Create a **MVP** (Minimum Valuable Product) allowing a **community of users** to **consult** or **request book** and **articles reviews** on demand.  
 
 The application is based on a requirements specifications, <a href="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Python%20FR/P7%20-%20D%C3%A9veloppez%20une%20application%20Web%20en%20utilisant%20Django/LITReview%20-%20Wireframes%20-%20FR.html">wireframes</a> and a <a href="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Python+EN/Python+782+Develop+a+Web+Application+Using+Django/LITReview+-+Schema.html">database schema.</a>  
-
-<a href="https://github.com/KDerec/litreview/blob/master/images/website_in_action.gif"><img src="images/website_in_action.gif" alt="general-show-of-the-website" style="border:1px solid black; padding: 2%"></a>  
-
+___
+<a href="https://github.com/KDerec/litreview/blob/master/images/website_in_action.gif"><img src="images/website_in_action.gif" alt="general-show-of-the-website"></a>  
+___
 
 <u>A user will need to:</u>
 - **Log in** and **sign up** - the site should not be accessible to a non-logged-in user.
@@ -166,32 +166,32 @@ The application is based on a requirements specifications, <a href="https://s3-e
 ### **Sign up, log in & log out**
 Show an example of sign up to create login, log in with the created login and logout. 
 
-<a href="https://github.com/KDerec/litreview/blob/master/images/signup_login.gif"><img src="images/signup_login.gif" alt="signup-login-usage-example" style="border:1px solid black; padding: 2%"></a>  
-
+<a href="https://github.com/KDerec/litreview/blob/master/images/signup_login.gif"><img src="images/signup_login.gif" alt="signup-login-usage-example"></a>  
+___
 ### **Feed page**
 Show a feed page with all tickets and reviews of books/articles from the connected user and his subscriptions.  
 
-<a href="https://github.com/KDerec/litreview/blob/master/images/feed_page.gif"><img src="images/feed_page.gif" alt="feed-page-usage-example" style="border:1px solid black; padding: 2%"></a>  
-
+<a href="https://github.com/KDerec/litreview/blob/master/images/feed_page.gif"><img src="images/feed_page.gif" alt="feed-page-usage-example"></a>  
+___
 ### **Tickets creation**
 Show a ticket creation with a title, description and image.  
 
-<a href="https://github.com/KDerec/litreview/blob/master/images/ticket_creation.gif"><img src="images/ticket_creation.gif" alt="ticket-creation-usage-example" style="border:1px solid black; padding: 2%"></a>  
-
+<a href="https://github.com/KDerec/litreview/blob/master/images/ticket_creation.gif"><img src="images/ticket_creation.gif" alt="ticket-creation-usage-example"></a>  
+___
 ### **Review creation**
 Show a review creation not in response to a ticket and  as a response to a ticket.  
 
-<a href="https://github.com/KDerec/litreview/blob/master/images/review_creation.gif"><img src="images/review_creation.gif" alt="review-creation-usage-example" style="border:1px solid black; padding: 2%"></a>  
-
+<a href="https://github.com/KDerec/litreview/blob/master/images/review_creation.gif"><img src="images/review_creation.gif" alt="review-creation-usage-example"></a>  
+___
 ### **View, edit and delete own tickets and reviews**
 Show an example of deletion and modification of ticket and review of the connected user.  
 
-<a href="https://github.com/KDerec/litreview/blob/master/images/edit_delete_own.gif"><img src="images/edit_delete_own.gif" alt="edit-delete-own-post-usage-example" style="border:1px solid black; padding: 2%"></a>  
-
+<a href="https://github.com/KDerec/litreview/blob/master/images/edit_delete_own.gif"><img src="images/edit_delete_own.gif" alt="edit-delete-own-post-usage-example"></a>  
+___
 ### **Subscription page**
 Show how the user can subscribe and unsubscribe to other user and see his subscribers.  
 
-<a href="https://github.com/KDerec/litreview/blob/master/images/subscription_page.gif"><img src="images/subscription_page.gif" alt="edit-delete-own-post-usage-example" style="border:1px solid black; padding: 2%"></a>  
+<a href="https://github.com/KDerec/litreview/blob/master/images/subscription_page.gif"><img src="images/subscription_page.gif" alt="edit-delete-own-post-usage-example"></a>  
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
