@@ -33,15 +33,30 @@
 ### 🌱 Developed skills
 - Using server-side rendering in **Django**.
 - Developing a web application using Django with **MVT structure** (Model-View_template).
-### 🚀 Project goal
-Create a **MVP** (Minimum Valuable Product) allowing a **community of users** to **consult** or **request book** and **articles reviews** on demand.  
+### 📖 Scenario
+After a successful interview, I got the job of **lead Python developer** for the young startup **LITReview**.  
+Its goal is to commercialize a product allowing a community of users to **consult** or **request** a **book review** on demand.
+### 🚧 Project goal
+The app has two main use cases:
+- People **requesting reviews** on a particular book or article;
+- People **looking for** interesting articles and books to read, based on the reviews of others.  
 
-The application is based on a requirements specifications, <a href="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Python%20FR/P7%20-%20D%C3%A9veloppez%20une%20application%20Web%20en%20utilisant%20Django/LITReview%20-%20Wireframes%20-%20FR.html">wireframes</a> and a <a href="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Python+EN/Python+782+Develop+a+Web+Application+Using+Django/LITReview+-+Schema.html">database schema.</a>  
-___
-<a href="https://github.com/KDerec/litreview/blob/master/images/website_in_action.gif"><img src="images/website_in_action.gif" alt="general-show-of-the-website"></a>  
-___
+We are looking to build a web application for our **MVP** (minimum viable product) and at this stage, there is no need to worry about the deployment of the live site.
 
-<u>A user will need to:</u>
+The site will need to:
+- Have a **UI** matching those of the <a href="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Python%20FR/P7%20-%20D%C3%A9veloppez%20une%20application%20Web%20en%20utilisant%20Django/LITReview%20-%20Wireframes%20-%20FR.html">wireframes</a>.
+- Have a **clean** and **minimal UI**.
+- Use **server-side** rendering to display information from the **database** on the page **dynamically**. 
+	
+The codebase will need to:
+- Use the **Django** framework.
+- Use the **Django template** language for server-side rendering.
+- Use **SQLite** as a local development DB.
+- Have a database design that matches the <a href="https://s3-eu-west-1.amazonaws.com/course.oc-static.com/projects/Python+EN/Python+782+Develop+a+Web+Application+Using+Django/LITReview+-+Schema.html">database schema.</a> and have syntax that meets **PEP8** guidelines. 
+
+### 🚀 Deliverable
+
+<u>A user can:</u>
 - **Log in** and **sign up** - the site should not be accessible to a non-logged-in user.
 - **View a feed** containing the latest tickets and reviews from users that they follow ordered by time with the latest first.
 - **Create new tickets** requesting a review on a book/article.
@@ -49,21 +64,12 @@ ___
 - Create reviews **not in** response to a ticket.  As part of a one-step process, the user will create a ticket and then a review responding to their own ticket.
 - Be able to **view**, **edit**, and **delete** their own **tickets** and **reviews**,
 - **Follow other users** by entering their username,
-- View who they follow and unfollow whoever they want. 
+- View who they follow and unfollow whoever they want.  
 
-
-<u>The site will need to:</u>
-- Have a **UI** matching those of the **wireframes**.
-- Have a **clean** and **minimal UI**.
-- Use **server-side** rendering to display information from the **database** on the page **dynamically**. 
-	
-<u>The codebase will need to:</u>
-- Use the **Django** framework.
-- Use the **Django template** language for server-side rendering.
-- Use **SQLite** as a local development DB.
-- Have a database design that matches the database schema and have syntax that meets **PEP8** guidelines. 
-
-
+#### Sample :
+___
+<a href="https://github.com/KDerec/litreview/blob/master/images/website_in_action.gif"><img src="images/website_in_action.gif" alt="general-show-of-the-website"></a>  
+___
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
